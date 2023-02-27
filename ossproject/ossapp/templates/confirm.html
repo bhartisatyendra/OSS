@@ -1,0 +1,24 @@
+{{product.name}}
+{{product.price}}
+{{product.image.url}}
+{{customer.address}}
+{{customer.pincode}}
+
+{% if method == "add_to_cart" %}
+{% for item in cart %}
+{{item.product.name}}
+{% endfor %}
+<a href="{% url 'checkout' %}">Confirm Order</a>
+{% else %}
+<form action="{% url 'checkout' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="productid" value="{{product.id}}"  hidden>
+    <br><input type="text" name="email" value="{{customer.emailaddress}}"  hidden>
+    <br><input type="text" name="price" value="{{product.price}}" >
+    <br><input type="text" name="address" value="{{customer.address}}" >
+    <br><input type="text" name="pincode" value="{{customer.pincode}}" >
+    <br><input type="text" name="quantity" value="1"  hidden>
+    <br><button type="submit" class="btn btn-warning"> Checkout</button>
+</form>
+
+{% endif %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+Welcome User
+{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-sm-6 text-center">
+        <h4 class="text-uppercase">
+        {% block page_title %}
+        {% endblock %}
+        </h4>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-sm-2">
+        <div class="list-group">
+            <a href="{% url 'user' %}" class="list-group-item list-group-item-action"> My Account </a>
+            <a href="{% url 'orders' %}" class="list-group-item list-group-item-action">My Orders </a>
+            <a href="{% url 'mycart' %}" class="list-group-item list-group-item-action">My Cart </a>
+            <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">Logout </a>
+        </div>
+    </div>
+
+    <div class="col-sm">
+
+        {% block user %}
+        {% endblock %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "userbase.html" %}
+{% block page_title %}
+Change Password
+{% endblock %}
+{% block user %}
+{% if err %}
+<div class="alert alert-danger" role="alert">
+    {{err}}
+</div>
+{% endif %}
+<div class="row">
+    <div class="col-sm">
+        <form action="{% url 'user' %}" method="post">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <label for="current_password" class="col-sm-2 col-form-label">Current Password</label>
+                <div class="col-sm-6">
+                    <input type="password" name="current_password" class="form-control" id="current_password">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="new_password" class="col-sm-2 col-form-label">New Password</label>
+                <div class="col-sm-6">
+                    <input type="password" name="new_password" class="form-control" id="new_password">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="confirm_password" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-6">
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                </div>
+            </div>
+            <div class="row mb-3" >
+                <div class="col-sm-2"></div>
+                <div class="col-sm-6 d-grid" >
+                      <button type="submit" class="btn btn-warning float-mid" >Change Password</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

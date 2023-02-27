@@ -1,0 +1,42 @@
+{% extends "userbase.html" %}
+{% block page_title %}
+My Account
+{% endblock %}
+{% block user %}
+{% if msg %}
+<div class="alert alert-success" role="alert">
+    {{msg}}
+</div>
+{% endif %}
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <table class="table" >
+            <tbody>
+            <tr>
+                <td class="fw-bold">Name</td><td class="text-uppercase">{{customer.name}}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Email</td><td>{{customer.emailaddress}}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Address</td><td class="text-uppercase">{{customer.address}}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Pincode</td><td class="text-uppercase">{{customer.pincode}}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Gender</td><td class="text-uppercase">{{customer.gender}}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Registration Date</td><td class="text-uppercase">{{customer.regdate}}</td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Password</td><td><a href="{% url 'changepass' %}" class="btn btn-warning">Change Password</a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

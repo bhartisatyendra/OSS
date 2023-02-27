@@ -1,0 +1,40 @@
+{% extends "userbase.html" %}
+{% block page_title %}
+My Orders
+{% endblock %}
+{% block user %}
+<div class="row">
+    <div class="col-sm">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for order in orders %}
+            <tr>
+                <td><img src="{{order.product.image.url}}" style="width: 5rem;"></td>
+                <td>{{order.product.name}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{% if not order.completed %}
+                    <span class="badge bg-warning text-dark">Pending</span>
+                    {% else %}
+                    <span class="badge bg-success ">Completed</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
